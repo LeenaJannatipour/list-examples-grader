@@ -14,3 +14,25 @@ echo 'Finished cloning'
 
 # Then, add here code to compile and run, and do any post-processing of the
 # tests
+
+
+if [[ -f student-submission/ListExamples.java ]]
+then 
+        echo 'ListExamples.java found'
+    else 
+            echo 'ListExamples.java not found'
+            echo 'Score: 0/4'
+            exit 1
+fi
+#copy files in student submission into grading area
+cp student-submission/ListExamples.java ./grading-area
+
+cp TestListExamples.java ./grading-area
+
+javac -cp $CPATH grading-area/*.java
+
+javac -cp $CPATH org.junit.runner.JUnitCore TestListExamples > junit-output.txt
+
+FAILURES = grep -c 
+
+
